@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<!-- Bootstrap CSS -->
+	    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+    <title>Pizzeria Index</title> 
+  </head>
+  <body>
+    <div>
+
+		<div class="container px-4">
+		  <div class="row gx-5">
+		    <div class="col mt-4">
+		     
+				
+				<h3 class="mb-4">Inserisci una nuova pizza</h3>
+				
+				<form id="formpizza"
+						th:action="@{/pizzeria/create}"
+						method="post"
+						th:object="${pizza}">
+						
+						<div class="mb-3">
+						  <label for="input" class="form-label">Nome Pizza</label>
+						  <input type="text" class="form-control" id="nome" placeholder="nome pizza" 
+						  		 th:field="*{nome}">
+						</div>
+						
+						<div class="mb-3">
+						<label for="input" class="form-label">Descrizione Pizza</label>
+						<input type="text" class="form-control" id="descrizione" placeholder="descrizione pizza" 
+							   th:field="*{descrizione}">
+						</div>
+
+						<div class="mb-3">
+						 <label for="input" class="form-label">Ingredienti Pizza</label>
+						 <input type="text" class="form-control" id="ingredienti" placeholder="ingredienti pizza" 
+						 		th:field="*{ingredienti}">
+						 </div>
+						 
+						 <div class="mb-3">
+						 <label for="input" class="form-label">Prezzo Pizza</label>
+						 <input type="number" class="form-control" id="prezzo" placeholder="es. 5,00" min="0" value="0" step=".01" 
+						 		th:field="*{prezzo}">
+						 </div>
+						 
+<!--						 carica immagine-->
+<!--						 <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>-->
+<!--						                 <form method="post" th:action="@{/upload}" enctype="multipart/form-data">-->
+<!--						                     <div class="form-group">-->
+<!--						                         <input type="file" name="image" accept="image/*"-->
+<!--												 th:field="*{fotourl}" class="form-control-file">-->
+<!--						                     </div>-->
+<!--						                     <button type="submit" class="btn btn-primary">Carica immagine</button>-->
+<!--						                 </form>-->
+<!--						                 <span th:if="${msg != null}" th:text="${msg}"></span>-->
+										 
+						 
+						 <div th:if="${#fields.hasAnyErrors()}">
+							<ul>
+								<li th:each="err : ${#fields.allErrors()}" 
+									th:text="${err}">
+									Errore
+								</li>
+							</ul>
+						 </div>
+						 
+						 <div class="col-auto">
+						   <button type="submit" class="btn btn-primary mb-3">Salva</button>
+						 </div>
+
+
+				</form>	  
+				<div class="mt-4 mb-4">
+												<!--				tornale menu pizze -->
+												<a th:href="@{/pizzeria/index}" class="btn btn-success">Torna a tutte le pizze</a>
+											  </div>
+			</div>
+		    </div>	    
+		  </div>
+		</div>
+		
+			
+		
+		
+	  
+	
+	<!-- Bootstrap Bundle with Popper -->
+	        <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>
