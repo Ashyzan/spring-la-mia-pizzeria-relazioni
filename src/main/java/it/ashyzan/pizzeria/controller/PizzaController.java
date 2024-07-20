@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.ashyzan.pizzeria.model.OffertaSpecialeModel;
 import it.ashyzan.pizzeria.model.PizzaModel;
+import it.ashyzan.pizzeria.repository.OffersRepository;
 import it.ashyzan.pizzeria.repository.PizzaRepository;
 import jakarta.validation.Valid;
 
@@ -30,7 +31,7 @@ public class PizzaController {
 	private PizzaRepository pizzarepository;
 
 	@Autowired
-	private OffertaSpecialeModel offertarepository;
+	private OffersRepository offertarepository;
 
 	@GetMapping("index")
 	public String index(Model model) {
@@ -41,8 +42,10 @@ public class PizzaController {
 	}
 
 	@GetMapping("/ingredienti/{id}")
-	public String dettagioPizza(@PathVariable("id") Integer id, Model model) {
+	public String dettaglioPizza(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("ingredienti", pizzarepository.getReferenceById(id));
+		model.addAttribute("pizza", pizzarepository.getReferenceById(id));
+		model.addAttribute("offerta", offertarepository.getReferenceById(id));
 		return "/pizzeria/ingredienti";
 	}
 
@@ -56,15 +59,8 @@ public class PizzaController {
 
 	@PostMapping("/create")
 	public String salvaPizza(@Valid @ModelAttribute("pizza") PizzaModel pizza, BindingResult bindingresult, Model model)
-//			, 		@RequestParam("image") MultipartFile file) throws IOException 
-	{
 
-//		// CARICAMENTO FILE
-//		StringBuilder fileNames = new StringBuilder();
-//		Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
-//		fileNames.append(file.getOriginalFilename());
-//		Files.write(fileNameAndPath, file.getBytes());
-//		model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
+	{
 
 		// CONTROLLO PREZZO
 
@@ -116,20 +112,21 @@ public class PizzaController {
 		return "redirect:/pizzeria/index";
 	}
 
-	// upload image files
-	// public static String UPLOAD_DIRECTORY = System.getProperty("/img");
+	// OFFERTE SPECIALI
 
-	@GetMapping("/{id}/offerte")
+	@GetMapping("{id}/offerte")
 	public String Offerta(@PathVariable("id") Integer id, Model model) {
 
+		PizzaModel pizza = pizzarepository.findById(id).get();
 		OffertaSpecialeModel offerta = new OffertaSpecialeModel();
 		offerta.setDataInizioOfferta(LocalDate.now());
-		offerta.setDataFineOfferta(LocalDate.of(0, 0, 0));
-		offerta.setPizza(offertarepository.getReferenceById(id));
+		offerta.setDataFineOfferta(LocalDate.now());
+		offerta.setPizza(pizza);
 
 		model.addAttribute("offerta", offerta);
+		model.addAttribute("editMode", false);
 
-		return "offerte/edit";
+		return "offerte/editoffers";
 	}
 
 }

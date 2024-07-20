@@ -22,7 +22,7 @@ public class OffertaSpecialeModel {
 	@Column(name = "titolo_offerta", nullable = false)
 	private String titoloOfferta;
 
-	@Column(name = "data_onizio_offerta", nullable = false)
+	@Column(name = "data_inizio_offerta", nullable = false)
 	private LocalDate dataInizioOfferta;
 
 	@Column(name = "data_fine_offerta", nullable = true)
