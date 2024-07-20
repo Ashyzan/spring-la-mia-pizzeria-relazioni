@@ -1,6 +1,5 @@
 package it.ashyzan.pizzeria.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,21 +114,21 @@ public class PizzaController {
 		return "redirect:/pizzeria/index";
 	}
 
-	// OFFERTE SPECIALI
-
-	@GetMapping("{id}/offerte")
-	public String Offerta(@PathVariable("id") Integer id, Model model) {
-
-		PizzaModel pizza = pizzarepository.findById(id).get();
-		OffertaSpecialeModel offerta = new OffertaSpecialeModel();
-		offerta.setDataInizioOfferta(LocalDate.now());
-		offerta.setDataFineOfferta(LocalDate.now());
-		offerta.setPizza(pizza);
-
-		model.addAttribute("offerta", offerta);
-		model.addAttribute("editMode", false);
-
-		return "offerte/editoffers";
-	}
+//	// OFFERTE SPECIALI
+//
+//	@GetMapping("{id}/offerte")
+//	public String Offerta(@PathVariable("id") Integer id, Model model) {
+//
+//		PizzaModel pizza = pizzarepository.findById(id).get();
+//		OffertaSpecialeModel offerta = new OffertaSpecialeModel();
+//		offerta.setDataInizioOfferta(LocalDate.now());
+//		offerta.setDataFineOfferta(LocalDate.now());
+//		offerta.setPizza(pizza);
+//
+//		model.addAttribute("offerta", offerta);
+//		model.addAttribute("editMode", false);
+//
+//		return "offerte/editoffers";
+//	}
 
 }
