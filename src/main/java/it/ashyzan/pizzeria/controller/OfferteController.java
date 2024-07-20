@@ -40,6 +40,7 @@ public class OfferteController {
 		offerta.setPizza(pizza);
 
 		model.addAttribute("offerta", offerta);
+		// model.addAttribute("standardDate", new Date());
 		model.addAttribute("editMode", false);
 
 		return "offerte/editoffers";
@@ -71,6 +72,9 @@ public class OfferteController {
 	@GetMapping("/edit/{id}")
 	public String modificaOfferta(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("offerta", offertarepository.getReferenceById(id));
+//		OffertaSpecialeModel offerta = new OffertaSpecialeModel();
+//		offerta.getDataInizioOfferta();
+//		offerta.getDataFineOfferta();
 		return "/offerte/edit";
 	}
 
@@ -80,7 +84,7 @@ public class OfferteController {
 
 		offertarepository.save(offerta);
 
-		System.out.println("ho salvato offerta " + offerta);
+		// System.out.println("ho salvato offerta " + offerta);
 
 		return "redirect:/pizzeria/ingredienti/" + offerta.getPizza().getId();
 	}
@@ -90,7 +94,7 @@ public class OfferteController {
 	public String delete(@PathVariable("id") Integer id) {
 
 		offertarepository.deleteById(id);
-		System.out.println("ho cancellato offerta con id " + id);
+		// System.out.println("ho cancellato offerta con id " + id);
 
 		return "redirect:/pizzeria/index";
 	}

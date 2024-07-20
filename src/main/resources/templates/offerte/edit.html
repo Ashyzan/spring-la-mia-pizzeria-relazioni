@@ -14,7 +14,7 @@
 		    <div class="col mt-4">
 		     
 				
-				<h3 class="mb-4">Modifica Offerta speciale <span th:text="${titoloOfferta}"></span></h3>
+				<h3 class="mb-4">Modifica Offerta speciale <span th:text="${offerta.titoloOfferta}"></span></h3>
 				
 				<form id="formofferta"
 						th:action="@{|/offerte/edit/${offerta.id}|}"  
@@ -30,13 +30,13 @@
 												
 						<div class="mb-3">
 						  <label for="data_inizio_offerta" class="form-label">Data Inizio Offerta</label>
-						  <input type="date" class="form-control" id="data_inizio_offerta" placeholder="data inizio offerta" 
+						  <input name="datainiziofferta" type="date" class="form-control" id="data_inizio_offerta" placeholder="data inizio offerta" 
 						  		 th:field="*{dataInizioOfferta}">
 						</div>
 						
 						<div class="mb-3">
 							<label for="data_fine_offerta" class="form-label">Data Fine Offerta</label>
-							<input type="date" class="form-control" id="data_fine_offerta" placeholder="data fine offerta" 
+							<input 	name="datafineofferta" type="date" class="form-control" id="data_fine_offerta" placeholder="data fine offerta" 
 							th:field="*{dataFineOfferta}">
 												</div>
 
