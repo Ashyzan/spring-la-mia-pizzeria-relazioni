@@ -45,7 +45,10 @@ public class PizzaController {
 	public String dettaglioPizza(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("ingredienti", pizzarepository.getReferenceById(id));
 		model.addAttribute("pizza", pizzarepository.getReferenceById(id));
-		model.addAttribute("offerta", offertarepository.getReferenceById(id));
+
+		List<OffertaSpecialeModel> offerte = offertarepository.findAll();
+		model.addAttribute("offerte", offerte);
+
 		return "/pizzeria/ingredienti";
 	}
 

@@ -14,9 +14,8 @@
 		    <div class="col mt-4">
 		     
 				
-				<h3 class="mb-4">Offerta speciale per<span th:text="offerta.pizza.nome"></span></h3>
+				<h3 class="mb-4">Offerta speciale per <span th:text="${offerta.pizza.nome}"></span></h3>
 				
-<!--				si può scrivere anche cosi 			th:action="@{/pizzeria/edit/{id} (id=${pizza.id})}" -->
 				<form id="formpizza"
 						th:action="@{/offerte/create}"  
 						method="post"
@@ -56,6 +55,10 @@
 
 
 				</form>	  
+	<div class="mt-4 mb-4">
+							<!--				tornale al dettaglio pizza -->
+							<a th:href="@{|/pizzeria/ingredienti/${id}|}" class="btn btn-success">Torna al dettaglio della pizza</a>
+					</div>
 				<div class="mt-4 mb-4">
 												<!--				tornale menu pizze -->
 												<a th:href="@{/pizzeria/index}" class="btn btn-success">Torna a tutte le pizze</a>

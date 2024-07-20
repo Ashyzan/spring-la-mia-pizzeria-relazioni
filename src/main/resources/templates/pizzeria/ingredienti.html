@@ -12,7 +12,7 @@
 			    <div class="col mt-4">
 			     
 					
-					<h3 class="mb-4">Dettagli e ingredienti della pizza</h3>
+					<h3 class="mb-4">Dettagli e ingredienti della <span th:text="${pizza.nome}" ></span></h3> 
 	
 	<p th:text="${ingredienti.ingredienti}" ></p>
 	
@@ -21,33 +21,29 @@
 	<div class="card" style="width: 18rem;">
 	  <div class="card-body">
 	    <h5 class="card-title">Offerte Speciali</h5>
-	    <h6 class="card-subtitle mb-2 text-body-secondary">Offerte attive:</h6>
+	    <h6 class="card-subtitle mb-2 text-body-secondary">attive:</h6>
 	    
 <!--		INSERIRE LISTA ELENCO OFFERTE SPECIALI-->
-<!--<div th:if="${offerta.pizza.size() > 0 } ">	-->
-<!--<p class="card-text">ELENCO OFFERTE</p>-->
-<!--		<ul th:each="item : ${offerte}">-->
-<!--			<li th:text="${item.titoloOfferta}">Nome offerta</li>-->
-<!--		</ul>-->
-<!--</div>	-->
+<div th:if="${pizza.offerte.size() > 0 } ">	
+		<ul th:each="item : ${offerte}">
+			<li th:text="${item.titoloOfferta}"></li>
+		</ul>
+</div>
 
-<!--<div th:if="offerta.pizza.size() <= 0">-->
-<!--	<p>Non ci sono offerte</p>-->
+<div th:if="${pizza.offerte.size() <= 0}">
+	<p>Non ci sono offerte</p>
+</div>
 	
-<!--</div>		-->
-	    <a th:href="@{|/pizzeria/{pizza.id}/offerte|}" class="card-link">Aggiungi Offerta Speciale a questa pizza</a>
+</div>		
+	    <a th:href="@{|/pizzeria/${pizza.id}/offerte|}" class="card-link">Aggiungi Offerta Speciale a questa pizza</a>
 	  </div>
 	</div>   
 </div>
-<!--		<div  th:if="${nuovaofferta.size() <= 0}">		Non ci sono offerte speciali associate alla pizza</div>-->
-		
-<!--	                               <ul 		th:each="" >-->
-<!--	                                   <li ><i class="fa-regular fa-circle-check yes"></i></li>-->
-	                                   
-<!--	                               </ul>-->
 		
 		<!--				tornale menu pizze -->
-				<a th:href="@{/pizzeria/index}" class="btn btn-success mt-4">Torna a tutte le pizze</a>
+		<div>
+
+				<a th:href="@{/pizzeria/index}" class="btn btn-success m-4">Torna a tutte le pizze</a>
 	  </div>
 	
 	</div>
