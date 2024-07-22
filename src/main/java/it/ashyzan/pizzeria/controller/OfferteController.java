@@ -72,9 +72,6 @@ public class OfferteController {
 	@GetMapping("/edit/{id}")
 	public String modificaOfferta(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("offerta", offertarepository.getReferenceById(id));
-//		OffertaSpecialeModel offerta = new OffertaSpecialeModel();
-//		offerta.getDataInizioOfferta();
-//		offerta.getDataFineOfferta();
 		return "/offerte/edit";
 	}
 

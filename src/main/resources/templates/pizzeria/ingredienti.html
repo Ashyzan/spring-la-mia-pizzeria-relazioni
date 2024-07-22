@@ -20,27 +20,46 @@
 	
 <!--	CARD OFFERTE SPECIALI-->
 <div class="col mt-4 d-flex justify-content-center">
-	<div class="card" style="width: 18rem;">
+	<div class="card" style="width: 55rem;">
 	  <div class="card-body">
 	    <h5 class="card-title">Offerte Speciali</h5>
 	    <h6 class="card-subtitle mb-2 text-body-secondary">attive:</h6>
 	    
 <!--		INSERIRE LISTA ELENCO OFFERTE SPECIALI-->
 <div th:if="${pizza.offerte.size() > 0 } ">	
-	
-		<ul th:each="item : ${pizza.offerte}">
-			<li style="display:inline; list-style:none; text-align:left;" th:text="${item.titoloOfferta}"></li>
-			<a th:href="@{|/offerte/edit/${item.id}|}" 	class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-			<!--						  pulsante delete-->
-								 						<a style="display:inline-block;"><form action="#" th:action="@{|/offerte/delete/${item.id}|}" method="post">
-								 						<button class="btn btn-danger" type="submit" id="submitbutton"
-								 						th:data-confirm-delete="|Sei sicuro di voler cancellare?|" 
-								 						onclick="if(!confirm(this.getAttribute('data-confirm-delete'))) return false">
-								 							<i class="bi bi-trash3"></i>							
-								 						</button>							
-								 						</form>					</a>
-		</ul>
+<!--	TABLELLA OFFERTE COLLEGATE ALLA PIZZA-->
+	<table class="table table-bordered" >
+	  <thead>
+	    <tr>
+	      <th scope="col">Nome Offerta</th>
+	      <th scope="col">Data inizio</th>
+	      <th scope="col">Data fine</th>
+		  <th scope="col">Edit</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:style="|margin:0 auto;vertical-align:middle;font-size:13px;|" th:each="item : ${pizza.offerte}">
+	      <td th:text="${item.titoloOfferta}">1</td>
+	      <td th:text="${item.dataInizioOfferta}">2</td>
+	      <td th:text="${item.dataFineOfferta}">3</td>
+		  <td >
+			<a th:style="|display:inline;float:left;|" th:href="@{|/offerte/edit/${item.id}|}"><i class="btn bi bi-pencil-square"></i></a>
+		  			<!--						  pulsante delete-->
+					<a th:style="|display:inline;float:left;|">
+						<form action="#" th:action="@{|/offerte/delete/${item.id}|}" method="post">
+							<button class="btn" type="submit" id="submitbutton"
+							  	th:data-confirm-delete="|Sei sicuro di voler cancellare?|" 
+							  	onclick="if(!confirm(this.getAttribute('data-confirm-delete'))) return false">
+								<i class="bi bi-trash3"></i></button>
+					</a>							
+						</form>	
+		  		
+			</td>
+	    </tr>
+	  </tbody>
+	</table>
 </div>
+
 
 <div th:if="${pizza.offerte.size() <= 0}">
 	<p>Non ci sono offerte</p>

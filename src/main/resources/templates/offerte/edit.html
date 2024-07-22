@@ -52,19 +52,11 @@
 						 <div class="col-auto">
 						   <button type="submit" class="btn btn-primary mb-3">Modifica</button>
 						 </div>
-						 <!--						  pulsante delete-->
-<!--						 						<a style="display:inline-block;"><form action="#" th:action="@{|/offerte/delete/${offerta.id}|}" method="post">-->
-<!--						 						<button class="btn btn-danger" type="submit" id="submitbutton"-->
-<!--						 						th:data-confirm-delete="|Sei sicuro di voler cancellare?|" -->
-<!--						 						onclick="if(!confirm(this.getAttribute('data-confirm-delete'))) return false">-->
-<!--						 							<i class="bi bi-trash3"></i>							-->
-<!--						 						</button>							-->
-<!--						 						</form>					</a>-->
 
 				</form>	  
 	<div class="mt-4 mb-4">
 							<!--				tornale al dettaglio pizza -->
-							<a th:href="@{|/pizzeria/ingredienti/${id}|}" class="btn btn-success">Torna al dettaglio della pizza</a>
+							<a th:href="@{|/pizzeria/ingredienti/${offerta.pizza.id}|}"  class="btn btn-success">Torna al dettaglio della pizza</a>
 					</div>
 				<div class="mt-4 mb-4">
 												<!--				tornale menu pizze -->
