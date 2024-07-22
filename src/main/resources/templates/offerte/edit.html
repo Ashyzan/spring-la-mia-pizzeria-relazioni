@@ -29,7 +29,7 @@
 												</div>
 												
 						<div class="mb-3">
-						  <label for="data_inizio_offerta" class="form-label">Data Inizio Offerta</label>
+						  <label for="data_inizio_offerta" class="form-label">Data Inizio Offerta <span th:text="${offerta.dataInizioOfferta}"></span> </label>
 						  <input name="datainiziofferta" type="date" class="form-control" id="data_inizio_offerta" placeholder="data inizio offerta" 
 						  		 th:field="*{dataInizioOfferta}">
 						</div>
