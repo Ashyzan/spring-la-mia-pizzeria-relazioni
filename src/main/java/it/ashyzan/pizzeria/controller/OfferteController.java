@@ -27,7 +27,6 @@ public class OfferteController {
 	@Autowired
 	private PizzaRepository pizzarepository;
 
-	// inserisco offerte che era su pizzacotroller
 	// OFFERTE SPECIALI
 
 	@GetMapping("/create/{id}")
@@ -45,13 +44,6 @@ public class OfferteController {
 
 		return "offerte/editoffers";
 	}
-	// fine inserimento
-
-//	@GetMapping("/create")
-//	public String create(Model model) {
-//		model.addAttribute("offerta", new OffertaSpecialeModel());
-//		return "/offerte/editoffers";
-//	}
 
 	@PostMapping("/create")
 	public String store(@ModelAttribute("offerta") OffertaSpecialeModel nuovaofferta, Model model,

@@ -7,6 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -43,6 +46,20 @@ public class PizzaModel {
 
 	@OneToMany(mappedBy = "pizza")
 	private List<OffertaSpecialeModel> offerte;
+
+	@ManyToMany()
+	@JoinTable(name = "pizza_listaIngredienti", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "listaIngredienti_id"))
+	private List<IngredientiModel> listaIngredienti;
+
+	// GETTER SETTER ///
+
+	public List<IngredientiModel> getListaIngredienti() {
+		return listaIngredienti;
+	}
+
+	public void setListaIngredienti(List<IngredientiModel> listaIngredienti) {
+		this.listaIngredienti = listaIngredienti;
+	}
 
 	public List<OffertaSpecialeModel> getOfferte() {
 		return offerte;
