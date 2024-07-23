@@ -27,12 +27,13 @@ public class IngredientiController {
 
 		List<IngredientiModel> ListaIng = ingredientiRepository.findAll();
 		model.addAttribute("listaingredienti", ListaIng);
+		model.addAttribute("ingrediente", new IngredientiModel());
 
 		return "/ingredienti/index";
 	}
 
 	@PostMapping("/create")
-	public String store(@Valid @ModelAttribute("ingrediente") IngredientiModel listaIngredienti,
+	public String store(@Valid @ModelAttribute("nomeingredienti") IngredientiModel listaIngredienti,
 			BindingResult bindingresult, Model model) {
 
 		if (bindingresult.hasErrors()) {

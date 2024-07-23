@@ -39,7 +39,6 @@ public class OfferteController {
 		offerta.setPizza(pizza);
 
 		model.addAttribute("offerta", offerta);
-		// model.addAttribute("standardDate", new Date());
 		model.addAttribute("editMode", false);
 
 		return "offerte/editoffers";

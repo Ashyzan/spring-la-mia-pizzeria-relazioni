@@ -19,7 +19,7 @@
 			th:object="${ingrediente}" method="post">
 			
 			<div class="input-group mb-3">
-			  <input type="text" class="form-control" placeholder="Nuovo ingrediente">
+			  <input type="text" class="form-control" placeholder="Nuovo ingrediente" th:field="*{nomeIngrediente}" >
 			  <div class="input-group-append">
 			    <button class="btn btn-outline-secondary" type="button">Aggiungi Ingrediente</button>
 <!--			div che mostra errori-->
