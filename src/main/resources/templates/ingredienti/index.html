@@ -7,36 +7,42 @@
     <title>Ingredienti delle Pizze</title> 
   </head>
   <body>
-	
-	
-	
+
 	<div class="container">
 		<div class="row">
 		<div class="col m-4 text-center">
 			<h2>Aggiungi un nuovo ingrediente</h2>
 			
-			<form id="ingredienti-inserimento" th:action="@{/ingredienti/create}" 
-			th:object="${ingrediente}" method="post">
-			
-			<div class="input-group mb-3">
-			  <input type="text" class="form-control" placeholder="Nuovo ingrediente" th:field="*{nomeIngrediente}" >
-			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" type="button">Aggiungi Ingrediente</button>
-<!--			div che mostra errori-->
-<!--			<div th:if="${#fields.hasAnyErrors()}">-->
-<!--									<ul>-->
-<!--										<li th:each="err : ${#fields.allErrors()}" -->
-<!--											th:text="${err}">-->
-<!--											Errore-->
-<!--										</li>-->
-<!--									</ul>-->
-<!--								 </div>-->
-			  </div>
-			</div>
+			<form id="ingredienti-inserimento" 
+				th:action="@{/ingredienti/create}" 
+				th:object="${nuovoingrediente}" 
+				method="post">
+				
+				<div class="input-group mb-3">
+					<label for="nomeingredienti"></label>
+				  <input type="text" class="form-control" 
+				  placeholder="Nuovo ingrediente" 
+				  th:field="*{nomeIngrediente}" >
+				  <div class="input-group-append">
+				    <button class="btn btn-outline-secondary" 
+					type="submit">Aggiungi Ingrediente</button>
+	
+				  </div>
+				</div>
 								 
+	              <!--div che mostra errori-->
+				 <div th:if="${#fields.hasAnyErrors()}">
+					<ul>
+						<li th:each="err : ${#fields.allErrors()}" 
+							th:text="${err}">
+							Errore
+						</li>
+					</ul>
+				</div>
 			</form>
 			
-			<img class="card-img-top" alt="ingredienti pizze"	th:src="@{/img/ingredienti-foto.jpg}">
+			<img class="card-img-top" alt="ingredienti pizze"	
+			th:src="@{/img/ingredienti-foto.jpg}">
 		</div>
 		<div class="col m-4 text-center">
 

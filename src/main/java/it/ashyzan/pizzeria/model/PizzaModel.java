@@ -48,7 +48,7 @@ public class PizzaModel {
 	private List<OffertaSpecialeModel> offerte;
 
 	@ManyToMany()
-	@JoinTable(name = "pizza_listaIngredienti", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "listaIngredienti_id"))
+	@JoinTable(name = "pizza_listaIngredienti", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "tabellaingredienti_id"))
 	private List<IngredientiModel> listaIngredienti;
 
 	// GETTER SETTER ///

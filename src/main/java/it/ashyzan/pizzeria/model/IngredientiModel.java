@@ -27,6 +27,8 @@ public class IngredientiModel {
 	@ManyToMany(mappedBy = "listaIngredienti")
 	private List<PizzaModel> pizze;
 
+	// GETTER SETTER //
+	
 	public Integer getId() {
 		return id;
 	}
@@ -51,6 +53,6 @@ public class IngredientiModel {
 		this.pizze = pizze;
 	}
 
-	// GETTER SETTER //
+	
 
 }

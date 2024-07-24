@@ -22,28 +22,28 @@ public class IngredientiController {
 	@Autowired
 	private IngredientiRepository ingredientiRepository;
 
-	@GetMapping
+	@GetMapping("/create")
 	public String index(Model model) {
 
 		List<IngredientiModel> ListaIng = ingredientiRepository.findAll();
 		model.addAttribute("listaingredienti", ListaIng);
-		model.addAttribute("ingrediente", new IngredientiModel());
+		model.addAttribute("nuovoingrediente", new IngredientiModel());
 
 		return "/ingredienti/index";
 	}
 
 	@PostMapping("/create")
-	public String store(@Valid @ModelAttribute("nomeingredienti") IngredientiModel listaIngredienti,
-			BindingResult bindingresult, Model model) {
+	public String store(@Valid @ModelAttribute("nuovoingrediente") 
+	IngredientiModel formIngredienti, BindingResult bindingresult, Model model) {
 
 		if (bindingresult.hasErrors()) {
 			return "/ingredienti/index";
 
 		}
 
-		ingredientiRepository.save(listaIngredienti);
+		ingredientiRepository.save(formIngredienti);
 
-		return "redirect: /ingredienti/index";
+		return "redirect:create";
 	}
 
 }
