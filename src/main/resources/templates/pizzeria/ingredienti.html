@@ -71,10 +71,10 @@
 	</div>   
 </div>
 
-<div th:each="ingredienti : ${pizza.listaIngredienti}">
 	<h6>Ingredienti associati alla pizza:</h6>
+<div th:each="ingredienti : ${pizza.listaIngredienti}">
 		<ul>
-			<li th:text="${ingredienti.checkIngrediente}"></li>
+			<li th:text="${ingredienti.nomeIngrediente}"></li>
 		</ul>
 </div>
 		
