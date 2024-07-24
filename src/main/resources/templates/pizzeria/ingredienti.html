@@ -19,7 +19,7 @@
 	<p th:text="${ingredienti.ingredienti}" ></p>
 	
 <!--	CARD OFFERTE SPECIALI-->
-<div class="col mt-4 d-flex justify-content-center">
+<div class="col m-4 d-flex justify-content-center">
 	<div class="card" style="width: 55rem;">
 	  <div class="card-body">
 	    <h5 class="card-title">Offerte Speciali</h5>
@@ -44,7 +44,7 @@
 	      <td th:text="${item.dataFineOfferta}">3</td>
 		  <td >
 			<a th:style="|display:inline;float:left;|" th:href="@{|/offerte/edit/${item.id}|}"><i class="btn bi bi-pencil-square"></i></a>
-		  			<!--						  pulsante delete-->
+		  			<!--pulsante delete-->
 					<a th:style="|display:inline;float:left;|">
 						<form action="#" th:action="@{|/offerte/delete/${item.id}|}" method="post">
 							<button class="btn" type="submit" id="submitbutton"
@@ -66,13 +66,12 @@
 </div>
 	
 </div>		
-<!--	    <a th:href="@{|/pizzeria/${pizza.id}/offerte|}" class="card-link">Aggiungi Offerta Speciale a questa pizza</a>-->
 		<a th:href="@{|/offerte/create/${pizza.id}|}" class="card-link">Aggiungi Offerta Speciale a questa pizza</a>
 	  </div>
 	</div>   
 </div>
 		
-		<!--				tornale menu pizze -->
+		<!--torna al menu pizze -->
 		<div>
 
 				<a th:href="@{/pizzeria/index}" class="btn btn-success m-4">Torna a tutte le pizze</a>

@@ -44,6 +44,18 @@
 						 		th:field="*{prezzo}">
 						 </div>
 						 
+						 <!--bottone associa ingrediente -->
+						 <h5 th:text="|Associa ingredienti|"> </h5>
+						 			<div class="mt-6">
+										<th:block th:each="associaIngrediente : ${ingredientiDB}" >
+											<input type="checkbox" name="ingrediente" 
+											th:value="${associaIngrediente.id}" 
+											th:field="*{ingredientiDB}"/>
+											<label th:text="${associaIngrediente.nomeIngrediente}"></label>
+										</th:block>
+						 		    </div>
+						 	
+						 
 <!--						 carica immagine-->
 <!--						 <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>-->
 <!--						                 <form method="post" th:action="@{/upload}" enctype="multipart/form-data">-->

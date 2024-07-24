@@ -1,5 +1,6 @@
 package it.ashyzan.pizzeria.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import it.ashyzan.pizzeria.model.IngredientiModel;
 import it.ashyzan.pizzeria.model.OffertaSpecialeModel;
 import it.ashyzan.pizzeria.model.PizzaModel;
+import it.ashyzan.pizzeria.repository.IngredientiRepository;
 import it.ashyzan.pizzeria.repository.OffersRepository;
 import it.ashyzan.pizzeria.repository.PizzaRepository;
 import jakarta.validation.Valid;
@@ -31,6 +34,9 @@ public class PizzaController {
 
 	@Autowired
 	private OffersRepository offertarepository;
+	
+	@Autowired
+	private IngredientiRepository ingredientirepository;
 
 	@GetMapping("index")
 	public String index(Model model) {
@@ -56,6 +62,8 @@ public class PizzaController {
 	@GetMapping("/create")
 	public String create(Model model) {
 		model.addAttribute("pizza", new PizzaModel());
+		model.addAttribute("checkIngrediente", new ArrayList<IngredientiModel>());
+		model.addAttribute("ingredientiDB", ingredientirepository.findAll() );
 		return "/pizzeria/create";
 	}
 

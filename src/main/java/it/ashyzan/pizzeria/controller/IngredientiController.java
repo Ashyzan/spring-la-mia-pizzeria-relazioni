@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,9 +38,22 @@ public class IngredientiController {
 	public String store(@Valid @ModelAttribute("nuovoingrediente") 
 	IngredientiModel formIngredienti, BindingResult bindingresult, Model model) {
 
+	    
+	    // metodo per filtrare gli ingredienti e verificare che un ingrediente sia o meno già a db
+	    // se ne può fare un metodo da richiamare a piacimento
+	    if(formIngredienti.getNomeIngrediente() != null) {
+		IngredientiModel ingredienteFiltrato = 
+		ingredientiRepository.findBynomeIngredienteIgnoreCase(formIngredienti.getNomeIngrediente());
+		if(ingredienteFiltrato != null) {
+			bindingresult.addError(new ObjectError("Errore di inserimento", 
+		"L'ingrediente esiste già"));
+		}
+	}
+	    
 		if (bindingresult.hasErrors()) {
-		    
-		    List<IngredientiModel> ListaIng = ingredientiRepository.findAll();
+		    // questi vanno rimessi perchè altrimenti il refresh è troppo forte e non filtra 
+		    // (ripresi dal @GetMapping("/crate") )
+		    	List<IngredientiModel> ListaIng = ingredientiRepository.findAll();
 			model.addAttribute("listaingredienti", ListaIng);
 			model.addAttribute("nuovoingrediente", formIngredienti);
 			
