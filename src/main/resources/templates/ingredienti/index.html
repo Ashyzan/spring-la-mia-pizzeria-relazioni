@@ -18,6 +18,15 @@
 				th:object="${nuovoingrediente}" 
 				method="post">
 				
+	              <!--div che mostra errori-->
+				 <div th:if="${#fields.hasAnyErrors()}">
+					<ul>
+						<li th:each="err : ${#fields.allErrors()}" 
+							th:text="${err}">
+							Errore
+						</li>
+					</ul>
+				</div>
 				<div class="input-group mb-3">
 					<label for="nomeingredienti"></label>
 				  <input type="text" class="form-control" 
@@ -30,15 +39,6 @@
 				  </div>
 				</div>
 								 
-	              <!--div che mostra errori-->
-				 <div th:if="${#fields.hasAnyErrors()}">
-					<ul>
-						<li th:each="err : ${#fields.allErrors()}" 
-							th:text="${err}">
-							Errore
-						</li>
-					</ul>
-				</div>
 			</form>
 			
 			<img class="card-img-top" alt="ingredienti pizze"	
@@ -47,6 +47,7 @@
 		<div class="col m-4 text-center">
 
 			<h2>Lista ingredienti</h2>
+			
 			
 			<div th:unless="${listaingredienti.isEmpty()}">
 				<ul th:each=" ingredienti : ${listaingredienti}">
@@ -59,6 +60,19 @@
 			<div th:if="${listaingredienti.isEmpty()}">
 				<p>Non ci sono ingredienti</p>
 				
+			</div>
+			
+<!--			<div th:unless="${#lists.isEmpty(listaingredienti)}">-->
+<!--				<ul th:each=" ingredienti : ${listaingredienti}">-->
+<!--					<li th:text="${ingredienti.nomeIngrediente}">-->
+						
+<!--					</li>-->
+<!--				</ul>-->
+				
+<!--			</div>-->
+<!--			<div th:if="${#lists.isEmpty(listaingredienti)">-->
+<!--				<p>Non ci sono ingredienti</p>-->
+<!--<div  th:if="${ingredienti.size() <= 0}">La lista è vuota</div>-->
 			</div>
 		
 		</div>

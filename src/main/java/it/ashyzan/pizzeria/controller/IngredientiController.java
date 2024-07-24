@@ -29,7 +29,7 @@ public class IngredientiController {
 		model.addAttribute("listaingredienti", ListaIng);
 		model.addAttribute("nuovoingrediente", new IngredientiModel());
 
-		return "/ingredienti/index";
+		return "ingredienti/index";
 	}
 
 	@PostMapping("/create")
@@ -37,7 +37,12 @@ public class IngredientiController {
 	IngredientiModel formIngredienti, BindingResult bindingresult, Model model) {
 
 		if (bindingresult.hasErrors()) {
-			return "/ingredienti/index";
+		    
+		    List<IngredientiModel> ListaIng = ingredientiRepository.findAll();
+			model.addAttribute("listaingredienti", ListaIng);
+			model.addAttribute("nuovoingrediente", formIngredienti);
+			
+			return "ingredienti/index";
 
 		}
 
