@@ -50,7 +50,7 @@
 										<th:block th:each="associaIngrediente : ${ingredientiDB}" >
 											<input type="checkbox" name="ingrediente" 
 											th:value="${associaIngrediente.id}" 
-											th:field="*{ingredientiDB}"/>
+											th:field="*{listaIngredienti}"/>
 											<label th:text="${associaIngrediente.nomeIngrediente}"></label>
 										</th:block>
 						 		    </div>

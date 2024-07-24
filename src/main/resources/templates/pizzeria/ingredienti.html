@@ -70,6 +70,13 @@
 	  </div>
 	</div>   
 </div>
+
+<div th:each="ingredienti : ${pizza.listaIngredienti}">
+	<h6>Ingredienti associati alla pizza:</h6>
+		<ul>
+			<li th:text="${ingredienti.checkIngrediente}"></li>
+		</ul>
+</div>
 		
 		<!--torna al menu pizze -->
 		<div>
