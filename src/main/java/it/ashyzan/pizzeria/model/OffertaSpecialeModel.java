@@ -2,6 +2,8 @@ package it.ashyzan.pizzeria.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,10 +24,11 @@ public class OffertaSpecialeModel {
 	@Column(name = "titolo_offerta", nullable = false)
 	private String titoloOfferta;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "data_inizio_offerta", nullable = false)
-
 	private LocalDate dataInizioOfferta;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "data_fine_offerta", nullable = true)
 	private LocalDate dataFineOfferta;
 
