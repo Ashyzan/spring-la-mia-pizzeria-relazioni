@@ -46,6 +46,24 @@
 						 		th:field="*{prezzo}">
 						 </div>
 						 
+						 	<h6>Ingredienti associati alla pizza:</h6>
+<!--						 <div th:each="ingredienti : ${pizza.listaIngredienti}">-->
+<!--						 		<ul>-->
+<!--						 			<li th:text="${ingredienti.nomeIngrediente}"></li>-->
+<!--						 		</ul>-->
+<!--						 </div>-->
+						 
+						 <!--bottone associa ingrediente -->
+						 <h5 th:text="|Associa ingredienti|"> </h5>
+						 			<div class="mt-6">
+						 			<th:block th:each="associaIngrediente : ${ingredientiDB}" >
+						 				<input type="checkbox" name="ingrediente" 
+						 				th:value="${associaIngrediente.id}" 
+						 				th:field="*{listaIngredienti}"/>
+						 				<label th:text="${associaIngrediente.nomeIngrediente}"></label>
+						 			</th:block>
+						 		    </div>
+						 
 						 <div th:if="${#fields.hasAnyErrors()}">
 							<ul>
 								<li th:each="err : ${#fields.allErrors()}" 
